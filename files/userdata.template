@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "
+echo '
 echo WAIT_FOR_60_SEC_FOR_SYSTEM_DOCKER_TO_START
 sleep 60
 sudo docker pull rancher/server
@@ -13,7 +13,7 @@ sudo docker run -d --privileged --restart=always -p 8080:8080 \
     rancher/server:${docker_img_tag}
 echo DOCKER_PS_STATUS
 sudo docker ps
-" > /tmp/start-docker
+' > /tmp/start-docker
 
 chmod +x /tmp/start-docker
 ./start-docker > /tmp/start-docker.log 2>/tmp/start-docker.err &
