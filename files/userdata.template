@@ -1,10 +1,10 @@
 #!/bin/bash
 
 echo "
-echo WAIT_FOR_15_SEC_FOR_SYSTEM_DOCKER_TO_START
-sleep 30
-docker pull rancher/server
-docker run -d --privileged --restart=always -p 8080:8080 \
+echo WAIT_FOR_60_SEC_FOR_SYSTEM_DOCKER_TO_START
+sleep 60
+sudo docker pull rancher/server
+sudo docker run -d --privileged --restart=always -p 8080:8080 \
     -e CATTLE_DB_CATTLE_MYSQL_HOST="${database_host}" \
     -e CATTLE_DB_CATTLE_MYSQL_PORT="${database_port}"  \
     -e CATTLE_DB_CATTLE_MYSQL_NAME="${database_name}" \
@@ -12,7 +12,7 @@ docker run -d --privileged --restart=always -p 8080:8080 \
     -e CATTLE_DB_CATTLE_PASSWORD="${database_password}" \
     rancher/server:${docker_img_tag}
 echo DOCKER_PS_STATUS
-docker ps
+sudo docker ps
 " > /tmp/start-docker
 
 chmod +x /tmp/start-docker
