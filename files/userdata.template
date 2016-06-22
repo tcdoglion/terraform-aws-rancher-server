@@ -1,8 +1,8 @@
 #!/bin/bash
 
 echo '
-echo WAIT_FOR_60_SEC_FOR_SYSTEM_DOCKER_TO_START
-sleep 60
+echo WAIT_FOR_120_SEC_FOR_SYSTEM_DOCKER_TO_START
+sleep 120
 sudo docker pull rancher/server
 sudo docker run -d --privileged --restart=always -p 8080:8080 \
     -e CATTLE_DB_CATTLE_MYSQL_HOST="${database_host}" \
@@ -13,7 +13,9 @@ sudo docker run -d --privileged --restart=always -p 8080:8080 \
     rancher/server:${docker_img_tag}
 echo DOCKER_PS_STATUS
 sudo docker ps
+echo DOCKER_CONTAINER_END
+
 ' > /tmp/start-docker
 
 chmod +x /tmp/start-docker
-./start-docker > /tmp/start-docker.log 2>/tmp/start-docker.err &
+./tmp/start-docker > /tmp/start-docker.log 2>/tmp/start-docker.err &
