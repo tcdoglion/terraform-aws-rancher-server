@@ -3,6 +3,7 @@
 echo '
 echo WAIT_FOR_120_SEC_FOR_SYSTEM_DOCKER_TO_START
 sleep 120
+docker run -it --rm --privileged slamper/disk_resizer xvda
 sudo docker pull rancher/server
 sudo docker run -d --privileged --restart=always -p 8080:8080 \
     -e CATTLE_DB_CATTLE_MYSQL_HOST="${database_host}" \
