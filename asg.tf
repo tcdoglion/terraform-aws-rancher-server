@@ -1,21 +1,5 @@
 # Autoscale Group
 
-# Variables
-variable "userdata_template" {
-  type = "string"
-  default = "userdata.template"
-}
-
-variable "rancher_manager_min_size" {
-  type = "string"
-  default = "1"
-}
-
-variable "rancher_manager_max_size" {
-  type = "string"
-  default = "1"
-}
-
 # Rancher Manager
 resource "aws_autoscaling_group" "rancher_manager" {
   name = "${var.rancher_server_name}"
@@ -90,6 +74,9 @@ resource "template_file" "user_data" {
     database_username = "${var.database_username}"
     database_password = "${var.database_password}"
 
+    manager_cluster_size = "${var.rancher_manager_max_size}"
+    host_registration_url = "${var.host_registration_url}"
+    encryption_key = "${var.encryption_key}"
   }
 
   lifecycle {
