@@ -7,20 +7,20 @@ variable "userdata_template" {
 }
 
 variable "rancher_manager_min_size" {
-  type = "number"
-  default = 1
+  type = "string"
+  default = "1"
 }
 
 variable "rancher_manager_max_size" {
-  type = "number"
-  default = 1
+  type = "string"
+  default = "1"
 }
 
 # Rancher Manager
 resource "aws_autoscaling_group" "rancher_manager" {
   name = "${var.rancher_server_name}"
-  min_size = ${var.rancher_manager_min_size}
-  max_size = ${var.rancher_manager_max_size}
+  min_size = "${var.rancher_manager_min_size}"
+  max_size = "${var.rancher_manager_max_size}"
   health_check_grace_period = 300
   health_check_type = "ELB"
   force_delete = true
