@@ -56,11 +56,11 @@ variable "database_password" {}
 variable "userdata_template" {
   default = "userdata.template"
 }
-variable "rancher_manager_min_size" {
-  default = "1"
+variable "cluster_min_size" {
+  default = "0"
 }
-variable "rancher_manager_max_size" {
-  default = "1"
+variable "cluster_max_size" {
+  default = "5"
 }
 variable "host_registration_url" {
   default = ""
