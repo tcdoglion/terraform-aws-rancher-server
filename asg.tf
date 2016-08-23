@@ -3,8 +3,8 @@
 # Rancher Manager
 resource "aws_autoscaling_group" "rancher_manager" {
   name = "${var.rancher_server_name}"
-  min_size = "${var.rancher_manager_min_size}"
-  max_size = "${var.rancher_manager_max_size}"
+  min_size = "${var.cluster_min_size}"
+  max_size = "${var.cluster_max_size}"
   health_check_grace_period = 300
   health_check_type = "ELB"
   force_delete = true
@@ -74,7 +74,7 @@ resource "template_file" "user_data" {
     database_username = "${var.database_username}"
     database_password = "${var.database_password}"
 
-    manager_cluster_size = "${var.rancher_manager_max_size}"
+    manager_cluster_size = "${var.cluster_max_size}"
     host_registration_url = "${var.host_registration_url}"
     encryption_key = "${var.encryption_key}"
   }
