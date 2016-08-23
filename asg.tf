@@ -1,9 +1,10 @@
 # Autoscale Group
-# We need to keep this at one for now
+
+# Rancher Manager
 resource "aws_autoscaling_group" "rancher_manager" {
   name = "${var.rancher_server_name}"
-  min_size = 1
-  max_size = 1
+  min_size = "${var.rancher_manager_min_size}"
+  max_size = "${var.rancher_manager_max_size}"
   health_check_grace_period = 300
   health_check_type = "ELB"
   force_delete = true
@@ -61,7 +62,7 @@ resource "aws_launch_configuration" "rancher_manager" {
 # User-data template
 resource "template_file" "user_data" {
 
-  template = "${file("${path.module}/files/userdata.template")}"
+  template = "${file("${path.module}/files/${var.userdata_template}")}"
 
   vars {
     docker_img_tag    = "${var.docker_img_tag}"
@@ -73,6 +74,9 @@ resource "template_file" "user_data" {
     database_username = "${var.database_username}"
     database_password = "${var.database_password}"
 
+    manager_cluster_size = "${var.rancher_manager_max_size}"
+    host_registration_url = "${var.host_registration_url}"
+    encryption_key = "${var.encryption_key}"
   }
 
   lifecycle {

@@ -51,3 +51,20 @@ variable "database_port" {
 variable "database_name" {}
 variable "database_username" {}
 variable "database_password" {}
+
+# ASG Vars
+variable "userdata_template" {
+  default = "userdata.template"
+}
+variable "rancher_manager_min_size" {
+  default = "1"
+}
+variable "rancher_manager_max_size" {
+  default = "1"
+}
+variable "host_registration_url" {
+  default = ""
+}
+variable "encryption_key" {
+  default = ""
+}
