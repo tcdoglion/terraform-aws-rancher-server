@@ -74,7 +74,7 @@ resource "template_file" "user_data" {
     database_username = "${var.database_username}"
     database_password = "${var.database_password}"
 
-    manager_cluster_size = "${var.cluster_max_size}"
+    manager_cluster_size = "${var.cluster_size}"
     host_registration_url = "${var.host_registration_url}"
     encryption_key = "${var.encryption_key}"
   }
