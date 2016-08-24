@@ -13,15 +13,15 @@ mkdir -p /var/lib/rancher/bin
 
 echo Creating /var/lib/rancher/etc/server.conf
 cat > /var/lib/rancher/etc/server.conf << EOF
-export CATTLE_HA_CLUSTER_SIZE="${manager_cluster_size}"
-export CATTLE_HA_HOST_REGISTRATION_URL="${host_registration_url}"
+export CATTLE_HA_CLUSTER_SIZE=${manager_cluster_size}
+export CATTLE_HA_HOST_REGISTRATION_URL=${host_registration_url}
 export CATTLE_HA_CONTAINER_PREFIX=rancher-ha-
 
-export CATTLE_DB_CATTLE_MYSQL_HOST="${database_host}"
-export CATTLE_DB_CATTLE_MYSQL_PORT="${database_port}"
-export CATTLE_DB_CATTLE_MYSQL_NAME="${database_name}"
-export CATTLE_DB_CATTLE_USERNAME="${database_username}"
-export CATTLE_DB_CATTLE_PASSWORD="${database_password}"
+export CATTLE_DB_CATTLE_MYSQL_HOST=${database_host}
+export CATTLE_DB_CATTLE_MYSQL_PORT=${database_port}
+export CATTLE_DB_CATTLE_MYSQL_NAME=${database_name}
+export CATTLE_DB_CATTLE_USERNAME=${database_username}
+export CATTLE_DB_CATTLE_PASSWORD=${database_password}
 
 export CATTLE_HA_PORT_REDIS=6379
 export CATTLE_HA_PORT_SWARM=2376
