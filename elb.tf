@@ -19,7 +19,7 @@ resource "aws_elb" "rancher_manager" {
   # }
 
   listener {
-    instance_port = 8080
+    instance_port = 18080
     instance_protocol = "tcp"
     lb_port = 443
     lb_protocol = "ssl"
@@ -30,7 +30,7 @@ resource "aws_elb" "rancher_manager" {
     healthy_threshold = 3
     unhealthy_threshold = 3
     timeout = 5
-    target = "HTTP:8080/ping"
+    target = "HTTP:18080/ping"
     interval = 6
   }
 
@@ -47,4 +47,8 @@ resource "aws_elb" "rancher_manager" {
 resource "aws_proxy_protocol_policy" "http_alt" {
   load_balancer = "${aws_elb.rancher_manager.name}"
   instance_ports = ["8080"]
+}
+resource "aws_proxy_protocol_policy" "http_alt2" {
+  load_balancer = "${aws_elb.rancher_manager.name}"
+  instance_ports = ["18080"]
 }
