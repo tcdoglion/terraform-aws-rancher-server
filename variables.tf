@@ -56,6 +56,9 @@ variable "database_password" {}
 variable "userdata_template" {
   default = "userdata.template"
 }
+variable "cluster_size" {
+  default = "3"
+}
 variable "cluster_min_size" {
   default = "0"
 }
