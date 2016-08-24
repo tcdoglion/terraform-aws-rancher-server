@@ -21,9 +21,9 @@ resource "aws_security_group_rule" "rancher_manager_egress_allow_all" {
 
 resource "aws_security_group_rule" "rancher_manager_ingress_zk1" {
     type = "ingress"
-    from_port = 2888
-    to_port = 2888
-    protocol = "tcp"
+    from_port = 500
+    to_port = 500
+    protocol = "udp" # UDP
     source_security_group_id = "${aws_security_group.rancher_manager.id}"
     security_group_id = "${aws_security_group.rancher_manager.id}"
 }
@@ -46,11 +46,29 @@ resource "aws_security_group_rule" "rancher_manager_ingress_zk3" {
     security_group_id = "${aws_security_group.rancher_manager.id}"
 }
 
+resource "aws_security_group_rule" "rancher_manager_ingress_zk1" {
+    type = "ingress"
+    from_port = 2888
+    to_port = 2888
+    protocol = "tcp"
+    source_security_group_id = "${aws_security_group.rancher_manager.id}"
+    security_group_id = "${aws_security_group.rancher_manager.id}"
+}
+
 resource "aws_security_group_rule" "rancher_manager_ingress_zk4" {
     type = "ingress"
     from_port = 3888
     to_port = 3888
     protocol = "tcp"
+    source_security_group_id = "${aws_security_group.rancher_manager.id}"
+    security_group_id = "${aws_security_group.rancher_manager.id}"
+}
+
+resource "aws_security_group_rule" "rancher_manager_ingress_zk1" {
+    type = "ingress"
+    from_port = 4500
+    to_port = 4500
+    protocol = "udp" # UDP
     source_security_group_id = "${aws_security_group.rancher_manager.id}"
     security_group_id = "${aws_security_group.rancher_manager.id}"
 }
@@ -63,3 +81,8 @@ resource "aws_security_group_rule" "rancher_manager_ingress_zk5" {
     source_security_group_id = "${aws_security_group.rancher_manager.id}"
     security_group_id = "${aws_security_group.rancher_manager.id}"
 }
+
+
+# NOTE:
+# You need to make sure that port 18080 is open and available to the ELB.
+# Currently, we are setting this in another module.
