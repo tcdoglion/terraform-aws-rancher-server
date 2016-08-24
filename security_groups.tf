@@ -19,7 +19,7 @@ resource "aws_security_group_rule" "rancher_manager_egress_allow_all" {
     security_group_id = "${aws_security_group.rancher_manager.id}"
 }
 
-resource "aws_security_group_rule" "rancher_manager_ingress_zk1" {
+resource "aws_security_group_rule" "rancher_manager_ingress_ipsec1" {
     type = "ingress"
     from_port = 500
     to_port = 500
@@ -28,7 +28,7 @@ resource "aws_security_group_rule" "rancher_manager_ingress_zk1" {
     security_group_id = "${aws_security_group.rancher_manager.id}"
 }
 
-resource "aws_security_group_rule" "rancher_manager_ingress_zk2" {
+resource "aws_security_group_rule" "rancher_manager_ingress_zk1" {
     type = "ingress"
     from_port = 2181
     to_port = 2181
@@ -37,7 +37,7 @@ resource "aws_security_group_rule" "rancher_manager_ingress_zk2" {
     security_group_id = "${aws_security_group.rancher_manager.id}"
 }
 
-resource "aws_security_group_rule" "rancher_manager_ingress_zk3" {
+resource "aws_security_group_rule" "rancher_manager_ingress_dkr1" {
     type = "ingress"
     from_port = 2376
     to_port = 2376
@@ -46,7 +46,7 @@ resource "aws_security_group_rule" "rancher_manager_ingress_zk3" {
     security_group_id = "${aws_security_group.rancher_manager.id}"
 }
 
-resource "aws_security_group_rule" "rancher_manager_ingress_zk1" {
+resource "aws_security_group_rule" "rancher_manager_ingress_zk2" {
     type = "ingress"
     from_port = 2888
     to_port = 2888
@@ -55,7 +55,7 @@ resource "aws_security_group_rule" "rancher_manager_ingress_zk1" {
     security_group_id = "${aws_security_group.rancher_manager.id}"
 }
 
-resource "aws_security_group_rule" "rancher_manager_ingress_zk4" {
+resource "aws_security_group_rule" "rancher_manager_ingress_zk3" {
     type = "ingress"
     from_port = 3888
     to_port = 3888
@@ -64,7 +64,7 @@ resource "aws_security_group_rule" "rancher_manager_ingress_zk4" {
     security_group_id = "${aws_security_group.rancher_manager.id}"
 }
 
-resource "aws_security_group_rule" "rancher_manager_ingress_zk1" {
+resource "aws_security_group_rule" "rancher_manager_ingress_ipsec2" {
     type = "ingress"
     from_port = 4500
     to_port = 4500
@@ -73,7 +73,7 @@ resource "aws_security_group_rule" "rancher_manager_ingress_zk1" {
     security_group_id = "${aws_security_group.rancher_manager.id}"
 }
 
-resource "aws_security_group_rule" "rancher_manager_ingress_zk5" {
+resource "aws_security_group_rule" "rancher_manager_ingress_redis1" {
     type = "ingress"
     from_port = 6379
     to_port = 6379
