@@ -19,7 +19,7 @@ resource "aws_elb" "rancher_manager" {
   # }
 
   listener {
-    instance_port = 18080
+    instance_port = 81
     instance_protocol = "tcp"
     lb_port = 443
     lb_protocol = "ssl"
