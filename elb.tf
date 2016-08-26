@@ -52,3 +52,11 @@ resource "aws_proxy_protocol_policy" "http_alt2" {
   load_balancer = "${aws_elb.rancher_manager.name}"
   instance_ports = ["18080"]
 }
+resource "aws_proxy_protocol_policy" "http_alt2" {
+  load_balancer = "${aws_elb.rancher_manager.name}"
+  instance_ports = ["81"]
+}
+resource "aws_proxy_protocol_policy" "http_alt2" {
+  load_balancer = "${aws_elb.rancher_manager.name}"
+  instance_ports = ["444"]
+}
