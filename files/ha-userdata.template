@@ -1,4 +1,4 @@
-#cloud-init
+#cloud-config
 write_files:
   - path: /etc/rc.local
     permissions: "0755"
