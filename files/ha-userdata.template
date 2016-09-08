@@ -53,7 +53,7 @@ write_files:
       export CATTLE_HA_PORT_ZK_LEADER=3888
       
       # Uncomment below to force HA enabled and not require one to set it in the UI
-      # export CATTLE_HA_ENABLED=true
+      export CATTLE_HA_ENABLED=true
       EOF
       
       echo Creating /var/lib/rancher/etc/server/encryption.key
@@ -75,6 +75,7 @@ write_files:
           echo Usage: $0 DOCKER_IMAGE
           exit 1
       fi
+      source /var/lib/rancher/etc/server.conf
       
       docker rm -fv rancher-ha >/dev/null 2>&1 || true
       ID=`docker run --restart=always -d -v /var/run/docker.sock:/var/run/docker.sock --name rancher-ha --net host --privileged -v /var/lib/rancher/etc:/var/lib/rancher/etc $IMAGE ha`
