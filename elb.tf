@@ -18,8 +18,11 @@ resource "aws_elb" "rancher_manager" {
   #   lb_protocol = "http"
   # }
 
+# listener port used to be 81 
+# chagned on Sep-15-2016
+#
   listener {
-    instance_port = 81
+    instance_port = 18080
     instance_protocol = "tcp"
     lb_port = 443
     lb_protocol = "ssl"
