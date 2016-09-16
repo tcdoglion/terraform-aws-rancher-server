@@ -38,7 +38,7 @@ resource "aws_elb" "rancher_manager" {
 #    target = "HTTP:18080/ping"
 
 # for single node
-    target = "TCP:8080/ping"
+    target = "HTTP:8080/ping"
     interval = 6
   }
 
