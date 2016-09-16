@@ -20,9 +20,10 @@ resource "aws_elb" "rancher_manager" {
 
 # listener port used to be 81 
 # chagned on Sep-15-2016
+# for single node, use 8080. 
 #
   listener {
-    instance_port = 18080
+    instance_port = 8080
     instance_protocol = "tcp"
     lb_port = 443
     lb_protocol = "ssl"
