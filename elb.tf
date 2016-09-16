@@ -34,7 +34,11 @@ resource "aws_elb" "rancher_manager" {
     healthy_threshold = 3
     unhealthy_threshold = 3
     timeout = 5
-    target = "HTTP:18080/ping"
+# -- for ha
+#    target = "HTTP:18080/ping"
+
+# for single node
+    target = "TCP:8080/ping"
     interval = 6
   }
 
