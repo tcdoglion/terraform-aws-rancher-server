@@ -28,42 +28,6 @@ resource "aws_security_group_rule" "rancher_manager_ingress_ipsec1" {
     security_group_id = "${aws_security_group.rancher_manager.id}"
 }
 
-resource "aws_security_group_rule" "rancher_manager_ingress_zk1" {
-    type = "ingress"
-    from_port = 2181
-    to_port = 2181
-    protocol = "tcp"
-    source_security_group_id = "${aws_security_group.rancher_manager.id}"
-    security_group_id = "${aws_security_group.rancher_manager.id}"
-}
-
-resource "aws_security_group_rule" "rancher_manager_ingress_dkr1" {
-    type = "ingress"
-    from_port = 2376
-    to_port = 2376
-    protocol = "tcp"
-    source_security_group_id = "${aws_security_group.rancher_manager.id}"
-    security_group_id = "${aws_security_group.rancher_manager.id}"
-}
-
-resource "aws_security_group_rule" "rancher_manager_ingress_zk2" {
-    type = "ingress"
-    from_port = 2888
-    to_port = 2888
-    protocol = "tcp"
-    source_security_group_id = "${aws_security_group.rancher_manager.id}"
-    security_group_id = "${aws_security_group.rancher_manager.id}"
-}
-
-resource "aws_security_group_rule" "rancher_manager_ingress_zk3" {
-    type = "ingress"
-    from_port = 3888
-    to_port = 3888
-    protocol = "tcp"
-    source_security_group_id = "${aws_security_group.rancher_manager.id}"
-    security_group_id = "${aws_security_group.rancher_manager.id}"
-}
-
 resource "aws_security_group_rule" "rancher_manager_ingress_ipsec2" {
     type = "ingress"
     from_port = 4500
@@ -73,15 +37,23 @@ resource "aws_security_group_rule" "rancher_manager_ingress_ipsec2" {
     security_group_id = "${aws_security_group.rancher_manager.id}"
 }
 
-resource "aws_security_group_rule" "rancher_manager_ingress_redis1" {
+resource "aws_security_group_rule" "rancher_manager_ha1" {
     type = "ingress"
-    from_port = 6379
-    to_port = 6379
+    from_port = 9345
+    to_port = 9345
     protocol = "tcp"
     source_security_group_id = "${aws_security_group.rancher_manager.id}"
     security_group_id = "${aws_security_group.rancher_manager.id}"
 }
 
+resource "aws_security_group_rule" "rancher_manager_icmp" {
+    type = "ingress"
+    from_port = 0
+    to_port = 0
+    protocol = "icmp"
+    source_security_group_id = "${aws_security_group.rancher_manager.id}"
+    security_group_id = "${aws_security_group.rancher_manager.id}"
+}
 
 # NOTE:
 # You need to make sure that port 18080 is open and available to the ELB.
